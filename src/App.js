@@ -1,22 +1,21 @@
 import './App.css';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 
 function App({}) {
 
   const [recipeName, setRecipeName] = useState ('')
   const [showRecipeInput, setShowRecipeInput] = useState('visible')
-  const [buttonName, setButtonName] = useState('Crear Nueva Receta')
-  
+  const [isShown, setIsShown] = useState(true);
+
   const handleRecipeNameChange = (event) => {
     setRecipeName(event.target.value)
   };
 
   const submit = (e) => {
     e.preventDefault();
-    // alert(`${recipeName}`)
     setShowRecipeInput('hidden')
-    setButtonName('Editar Nombre de Receta')
+    setIsShown(false)
   };
 
   function RecipeHeader({currentRecipeName}) {
@@ -36,8 +35,9 @@ function App({}) {
           onChange={handleRecipeNameChange}
         />
         <br></br>
-        <button>{buttonName}</button>
-
+        <div>
+          <button> {isShown ? 'Crear Nueva Receta' : 'Editar Nueva Receta'}</button>
+        </div>
       </form>
 
       <RecipeHeader currentRecipeName={recipeName}/>
