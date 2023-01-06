@@ -1,26 +1,30 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, Fragment } from 'react';
 
 
 function App({}) {
 
-  const [recipeName, setRecipeName] = useState ('')
+  const [recipeName, setRecipeName] = useState('')
+  const [authorName, setAuthorName] = useState('')
   const [showRecipeInput, setShowRecipeInput] = useState('visible')
   const [isShown, setIsShown] = useState(true);
 
   const handleRecipeNameChange = (event) => {
-    setRecipeName(event.target.value)
+    setRecipeName(event.target.value);
   };
 
   const submit = (e) => {
     e.preventDefault();
-    setShowRecipeInput('hidden')
-    setIsShown(false)
+    setShowRecipeInput('hidden');
+    setIsShown(false);
   };
 
   function RecipeHeader({currentRecipeName}) {
     return(
-      <h1>Receta para hacer {currentRecipeName} </h1>
+      <Fragment>
+        <h1>Receta para hacer {currentRecipeName} </h1>
+        <h3>Autor: {authorName}</h3>
+      </Fragment>
     );
   }
   
