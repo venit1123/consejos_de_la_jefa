@@ -70,8 +70,17 @@
 
 // Example: Fetching Data using Hooks
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment} from 'react';
 
+function RecipeName({recipeName, instructions, foodImage}){
+  return(
+    <Fragment>
+      <h2>Recipe Name: {recipeName}</h2>
+      <p>{instructions}</p>
+      <img src={foodImage} height={150} alt={recipeName}></img>
+    </Fragment>
+  );
+}
 
 function App({}) {
   const [data, setData] =  useState(null)
@@ -86,12 +95,13 @@ function App({}) {
   console.log('This is the data:', {data})
   if (data)
     return (
-      <pre>
-        {JSON.stringify(data, null, 2)}
-      </pre>
+      <RecipeName 
+        recipeName={data.recipes[0].title} 
+        instructions={data.recipes[0].instructions}
+        foodImage={data.recipes[0].image}/>
     );
   return(
-    <h1>TESTING FETCHIN DATA WITH HOOKS</h1>
+      <h1>TESTING FETCHIN DATA WITH HOOKS</h1>
   );
 }
 
