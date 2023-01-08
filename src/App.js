@@ -84,25 +84,32 @@ function RecipeName({recipeName, instructions, foodImage}){
 
 function App({}) {
   const [data, setData] =  useState(null)
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+
   useEffect( () => {
+    setLoading(true)
     fetch(
       'https://api.spoonacular.com/recipes/random?apiKey=237e5514eed74c1a8216d760546f9f15'
     )
     .then((response) => response.json())
     .then((data) => setData(data))
+    .then(() => setLoading(false))
+    .catch((data) => setError(data));
   }, []);
 
-  console.log('This is the data:', {data})
-  if (data)
-    return (
+  // console.log('This is the data:', {data})
+
+  if(loading) return <h1>Loading....</h1>
+  if(error) return <pre>{JSON.stringify(error)}</pre>
+  if(!data) return null;
+
+  return (
       <RecipeName 
         recipeName={data.recipes[0].title} 
         instructions={data.recipes[0].instructions}
         foodImage={data.recipes[0].image}/>
     );
-  return(
-      <h1>TESTING FETCHIN DATA WITH HOOKS</h1>
-  );
 }
 
 
