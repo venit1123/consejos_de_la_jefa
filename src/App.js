@@ -68,18 +68,78 @@
 // export default App;
 
 
-// Example: Fetching Data using Hooks
+// // Example: Fetching Data using Hooks
+// import './App.css';
+// import { useState, useEffect, Fragment} from 'react';
+
+// function RecipeName({recipeName, instructions, foodImage}){
+//   return(
+//     <Fragment>
+//       <h2>Recipe Name: {recipeName}</h2>
+//       <p>{instructions}</p>
+//       <img src={foodImage} height={150} alt={recipeName}></img>
+//     </Fragment>
+//   );
+// }
+
+// function App({}) {
+//   const [data, setData] =  useState(null)
+//   const [error, setError] = useState(null)
+//   const [loading, setLoading] = useState(false)
+
+//   useEffect( () => {
+//     setLoading(true)
+//     fetch(
+//       'https://api.spoonacular.com/recipes/random?apiKey=237e5514eed74c1a8216d760546f9f15'
+//     )
+//     .then((response) => response.json())
+//     .then((data) => setData(data))
+//     .then(() => setLoading(false))
+//     .catch((data) => setError(data));
+//   }, []);
+
+//   if(loading) return <h1>Loading....</h1>
+//   if(error) return <pre>{JSON.stringify(error)}</pre>
+//   if(!data) return null;
+
+//   return (
+//       <RecipeName 
+//         recipeName={data.recipes[0].title} 
+//         instructions={data.recipes[0].instructions}
+//         foodImage={data.recipes[0].image}/>
+//     );
+// }
+
+
+// export default App;
+
+
+// Example: Fetching Data with GraphQL
 import './App.css';
 import { useState, useEffect, Fragment} from 'react';
 
-function RecipeName({recipeName, instructions, foodImage}){
+const query = `query {
+  allLifts{
+    name,
+    elevationGain,
+    status
+  }
+}`;
+
+
+function Lift({name, elevationGain, status}){
   return(
     <Fragment>
-      <h2>Recipe Name: {recipeName}</h2>
-      <p>{instructions}</p>
-      <img src={foodImage} height={150} alt={recipeName}></img>
+      <h2>Name: {name}</h2>
+      <p>{elevationGain}, {status}</p>
     </Fragment>
   );
+}
+
+const opts = {
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({query})
 }
 
 function App({}) {
@@ -90,7 +150,8 @@ function App({}) {
   useEffect( () => {
     setLoading(true)
     fetch(
-      'https://api.spoonacular.com/recipes/random?apiKey=237e5514eed74c1a8216d760546f9f15'
+      'https://snowtooth.moonhighway.com/',
+      opts
     )
     .then((response) => response.json())
     .then((data) => setData(data))
@@ -98,17 +159,16 @@ function App({}) {
     .catch((data) => setError(data));
   }, []);
 
-  // console.log('This is the data:', {data})
-
   if(loading) return <h1>Loading....</h1>
   if(error) return <pre>{JSON.stringify(error)}</pre>
   if(!data) return null;
 
   return (
-      <RecipeName 
-        recipeName={data.recipes[0].title} 
-        instructions={data.recipes[0].instructions}
-        foodImage={data.recipes[0].image}/>
+      <Fragment>
+        {data.data.allLifts.map((lift) => (
+          <Lift name={lift.name} elevationGain={lift.elevationGain} status={lift.status}/>
+        ))}
+      </Fragment>
     );
 }
 
