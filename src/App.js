@@ -114,61 +114,99 @@
 // export default App;
 
 
+// // Example: Fetching Data with GraphQL
+// import './App.css';
+// import { useState, useEffect, Fragment} from 'react';
+
+// const query = `query {
+//   allLifts{
+//     name,
+//     elevationGain,
+//     status
+//   }
+// }`;
+
+
+// function Lift({name, elevationGain, status}){
+//   return(
+//     <Fragment>
+//       <h2>Name: {name}</h2>
+//       <p>{elevationGain}, {status}</p>
+//     </Fragment>
+//   );
+// }
+
+// const opts = {
+//   method: "POST",
+//   headers: {"Content-Type": "application/json"},
+//   body: JSON.stringify({query})
+// }
+
+// function App({}) {
+//   const [data, setData] =  useState(null)
+//   const [error, setError] = useState(null)
+//   const [loading, setLoading] = useState(false)
+
+//   useEffect( () => {
+//     setLoading(true)
+//     fetch(
+//       'https://snowtooth.moonhighway.com/',
+//       opts
+//     )
+//     .then((response) => response.json())
+//     .then((data) => setData(data))
+//     .then(() => setLoading(false))
+//     .catch((data) => setError(data));
+//   }, []);
+
+//   if(loading) return <h1>Loading....</h1>
+//   if(error) return <pre>{JSON.stringify(error)}</pre>
+//   if(!data) return null;
+
+//   return (
+//       <Fragment>
+//         {data.data.allLifts.map((lift) => (
+//           <Lift name={lift.name} elevationGain={lift.elevationGain} status={lift.status}/>
+//         ))}
+//       </Fragment>
+//     );
+// }
+
+
+// export default App;
+
+
 // Example: Fetching Data with GraphQL
 import './App.css';
 import { useState, useEffect, Fragment} from 'react';
 
-const query = `query {
-  allLifts{
-    name,
-    elevationGain,
-    status
-  }
-}`;
-
-
-function Lift({name, elevationGain, status}){
-  return(
-    <Fragment>
-      <h2>Name: {name}</h2>
-      <p>{elevationGain}, {status}</p>
-    </Fragment>
-  );
-}
-
-const opts = {
-  method: "POST",
-  headers: {"Content-Type": "application/json"},
-  body: JSON.stringify({query})
-}
-
 function App({}) {
-  const [data, setData] =  useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const dummy_data = [
+    {"name": "Mexico City", "elevation": 10891},
+    {"name": "Guadalajara", "elevation": 10067},
+    {"name": "Monterrey", "elevation": 9735}
+  ]
 
-  useEffect( () => {
-    setLoading(true)
-    fetch(
-      'https://snowtooth.moonhighway.com/',
-      opts
-    )
-    .then((response) => response.json())
-    .then((data) => setData(data))
-    .then(() => setLoading(false))
-    .catch((data) => setError(data));
-  }, []);
-
-  if(loading) return <h1>Loading....</h1>
-  if(error) return <pre>{JSON.stringify(error)}</pre>
-  if(!data) return null;
+  function List({data, renderItem, renderEmpty}) {
+     return !data.length ? (
+        renderEmpty) : (
+           <ul>{data.map((item) => (
+              <li key={item.name}>
+                {renderItem(item)}
+              </li>
+           ))}
+           </ul>)
+  }
 
   return (
-      <Fragment>
-        {data.data.allLifts.map((lift) => (
-          <Lift name={lift.name} elevationGain={lift.elevationGain} status={lift.status}/>
-        ))}
-      </Fragment>
+      <List 
+        data={dummy_data}
+        renderEmpty={<p>This list is empty</p>}
+        renderItem={item => 
+          <Fragment>
+            {item.name} - {item.elevation}
+          </Fragment>}
+        />
     );
 }
 
