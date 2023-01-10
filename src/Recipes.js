@@ -1,14 +1,13 @@
-import './App.css';
 import React from 'react';
 import Nav from './Nav';
 
-function App() {
+function Recipes() {
   return (
     <>
       <Nav/>
-      <h1>App</h1>
+      <h1>Recipe</h1>
     </>
   );
 }
 
-export default App
+export default Recipes

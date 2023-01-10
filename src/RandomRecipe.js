@@ -1,14 +1,13 @@
-import './App.css';
 import React from 'react';
 import Nav from './Nav';
 
-function App() {
+function RandomRecipe() {
   return (
     <>
       <Nav/>
-      <h1>App</h1>
+      <h1>Random Recipe</h1>
     </>
   );
 }
 
-export default App
+export default RandomRecipe
