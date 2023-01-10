@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 
 function Nav(){
   return (
-      <nav>
+       <nav>
         <Link to="/">Home</Link>
         <Link to="/createRecipe">Create Recipe</Link>
         <Link to="/recipes">Recipes</Link>

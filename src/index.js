@@ -13,14 +13,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App/>}/>
-      <Route path="/createRecipe" element={<CreateRecipe/>}/>
-      <Route path="/recipes" element={<Recipes/>}/>
-      <Route path="/randomRecipe" element={<RandomRecipe/>}/>
-      <Route path="/about" element={<AboutUs/>}>
-          <Route path="otherProjects" element={<OtherProjects/>}/>
-      </Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<App/>}/>
+        <Route path="/createRecipe" element={<CreateRecipe/>}/>
+        <Route path="/recipes" element={<Recipes/>}/>
+        <Route path="/randomRecipe" element={<RandomRecipe/>}/>
+        <Route path="/about" element={<AboutUs/>}>
+            <Route path="otherProjects" element={<OtherProjects/>}/>
+        </Route>
+      </Routes>
   </BrowserRouter>
 );

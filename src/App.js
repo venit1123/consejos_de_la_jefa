@@ -5,8 +5,8 @@ import Nav from './Nav';
 function App() {
   return (
     <>
-      <Nav/>
-      <h1>Home</h1>
+      {/* <Nav/> */}
+      <h1>This is the App container</h1>
     </>
   );
 }
