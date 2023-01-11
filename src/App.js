@@ -5,7 +5,7 @@ import Nav from './Nav';
 function App() {
   return (
     <>
-      {/* <Nav/> */}
+      <Nav/>
       <h1>This is the App container</h1>
     </>
   );
