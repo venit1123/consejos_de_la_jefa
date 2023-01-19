@@ -9,3 +9,9 @@ export default {
   HOST,
   SERVER_URL,
 };
+
+/*
+NOTE: If you want to run with a different PORT or HOST when running in local,
+    you can do the following.
+    >> PORT=3000 HOST='localhost' npm run dev:server
+*/
