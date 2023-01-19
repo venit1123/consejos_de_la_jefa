@@ -25,3 +25,7 @@ npm i -D eslint
 ```
 npm i -D prettier
 ```
+
+## Production Dependencies
+
+[EJS](https://ejs.co/)
