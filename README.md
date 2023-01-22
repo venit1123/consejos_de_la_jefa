@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# CONSEJOS DE LA JEFA / MOM'S ADVICE
+## Getting Started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+After cloning project, install node modules
+```
+npm install
+```
+## Dev Dependencies
 
-## Available Scripts
+[TSND - TypeScrip Node Dev](https://www.npmjs.com/package/ts-node-dev) 
+```
+npm i -D ts-node-dev
+```
+OR / SAME AS 
+```
+npm install --save-dev ts-node-dev
+```
 
-In the project directory, you can run:
+[ESLint](https://eslint.org)
+```
+npm i -D eslint
+```
 
-### `npm start`
+[ESLint](https://eslint.org)
+```
+npm i -D eslint
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Prettier](https://www.npmjs.com/package/prettier) 
+```
+npm i -D prettier
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Production Dependencies
 
-### `npm test`
+[EJS](https://ejs.co/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## DB
 
-### `npm run build`
+[Mongo DB](https://www.mongodb.com/)
+Note: You can also download MongoDB using CLI and Brew
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Docker
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Download Docker Desktop](https://www.docker.com/products/docker-desktop/)
+To run docker on local
+```
+docker-compose up
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Studio3T
 
-### `npm run eject`
+Download
+[Studio 3T](https://studio3t.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Connect to DB with the URI:  mongodb://localhost:27017
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Mongoose
+[MongooseJS](https://mongoosejs.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+No need to install it as is already a production dependency, this is just a side note.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm install mongoose
+```
