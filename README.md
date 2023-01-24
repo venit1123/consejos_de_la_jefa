@@ -24,6 +24,8 @@ npm i -D eslint
 [ESLint](https://eslint.org)
 ```
 npm i -D eslint
+npm i -D @typescript-eslint/parser eslint-plugin-react eslint-plugin-react-hooks 
+
 ```
 
 [Prettier](https://www.npmjs.com/package/prettier) 
@@ -63,3 +65,6 @@ No need to install it as is already a production dependency, this is just a side
 ```
 npm install mongoose
 ```
+
+
+

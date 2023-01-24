@@ -4,6 +4,7 @@
 /node_modules
 .vscode
 /dist/main.js
+.eslintrc
 
 # testing
 /coverage
