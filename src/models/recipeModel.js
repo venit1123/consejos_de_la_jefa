@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const RecipeSchema = new Schema({
+export default class RecipeSchema {
+    constructor
     title: {
         type: String,
         require: "Enter Recipe Name"
@@ -18,4 +19,4 @@ export const RecipeSchema = new Schema({
        type: Date,
        default: Date.now
     }
-});
+}
