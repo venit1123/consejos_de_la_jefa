@@ -57,13 +57,13 @@ Download
 
 Connect to DB with the URI:  mongodb://localhost:27017
 
-## Mongoose
-[MongooseJS](https://mongoosejs.com/)
-
-No need to install it as is already a production dependency, this is just a side note.
+## MongoDB
+[Mongodb](https://www.npmjs.com/package/mongodb)
+MongoDB driver for Node.js.
+No need to install it as is already a production dependency, this is just a side note. 
 
 ```
-npm install mongoose
+npm install mongodb
 ```
 
 
