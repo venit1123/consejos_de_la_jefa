@@ -1,6 +1,6 @@
+const webpack = require("webpack");
 
 module.exports = {
-
   entry: "./src/index.tsx",
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
@@ -21,4 +21,10 @@ module.exports = {
       //   },
     ],
   },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      HOST: "0.0.0.0",
+      PORT: "8080"
+    })
+  ]
 };

@@ -1,6 +1,7 @@
 // Server entry point
 import express from "express";
 import config from "./config";
+import recipeRouter from "./recipeRoutes";
 
 const server = express();
 
@@ -8,6 +9,7 @@ server.set("view engine", "ejs"); // tells express to use EJS as template langua
 
 server.use(express.static("dist")); //use() is a function to add a middleware (layer). This line tells express to serve any static assets undet dist directory
 
+server.use("/api", recipeRouter);
 
 // to serve the root path
 server.use("/", (req, res) => {
