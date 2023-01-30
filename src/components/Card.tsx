@@ -1,4 +1,15 @@
-function Card({ title, subtitle, description }) {
+function Card({
+  title,
+  subtitle,
+  description,
+  handleLeftCardButton,
+  recipeId,
+}) {
+  const handleLeftClick = (event) => {
+    event.preventDefault();
+    handleLeftCardButton(recipeId);
+  };
+
   return (
     <div className="card h-100" style={{ width: "25rem" }}>
       <div className="card-body">
@@ -7,9 +18,9 @@ function Card({ title, subtitle, description }) {
           <em>{subtitle}</em>
         </h6>
         <p className="card-text">{description}</p>
-        <a href="#" className="card-link">
+        <button onClick={handleLeftClick} className="card-link">
           Ver Receta
-        </a>
+        </button>
         <a href="#" className="card-link">
           Modificar Receta
         </a>
