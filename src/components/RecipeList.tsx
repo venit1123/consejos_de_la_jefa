@@ -25,6 +25,7 @@ function RecipeList({ initialRecipies, onRecipeClick }) {
                   description={recipe.description}
                   handleLeftCardButton={onRecipeClick}
                   recipeId={recipe.id}
+                  toPath={`/recipes/${recipe.id}`}
                 />
               </div>
             );

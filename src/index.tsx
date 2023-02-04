@@ -5,6 +5,7 @@ import Recipes from "./components/Recipes";
 import RandomRecipe from "./components/RandomRecipe";
 import AboutUs from "./components/AboutUs";
 import OtherProjects from "./components/OtherProjects";
+import Recipe from "./components/RecipeInstructions";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,7 +18,12 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/createRecipe" element={<CreateRecipe />} />
-      <Route path="/recipes" element={<Recipes initialRecipies={[]} />} />
+      <Route
+        path="/recipes"
+        element={<Recipes initialRecipies={[]} />}
+      >
+        <Route path=":recipeId" element={<Recipe />} />
+      </Route>
       <Route path="/randomRecipe" element={<RandomRecipe />} />
       <Route path="/about" element={<AboutUs />}>
         <Route
