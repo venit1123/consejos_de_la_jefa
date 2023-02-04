@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+
 function Card({
   title,
   subtitle,
   description,
   handleLeftCardButton,
   recipeId,
+  toPath,
 }) {
   const handleLeftClick = (event) => {
     event.preventDefault();
@@ -18,9 +21,16 @@ function Card({
           <em>{subtitle}</em>
         </h6>
         <p className="card-text">{description}</p>
-        <button onClick={handleLeftClick} className="card-link">
+        <Link
+          className="card-link"
+          onClick={handleLeftClick}
+          to={toPath}
+        >
           Ver Receta
-        </button>
+        </Link>
+        {/* <button onClick={handleLeftClick} className="card-link">
+          Ver Receta
+        </button> */}
         <a href="#" className="card-link">
           Modificar Receta
         </a>
