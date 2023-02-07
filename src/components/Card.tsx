@@ -5,12 +5,18 @@ function Card({
   subtitle,
   description,
   handleLeftCardButton,
-  recipeId,
-  toPath,
+  leftClickParams,
+  handleRightCardButton,
+  rightClickParams,
 }) {
-  const handleLeftClick = (event) => {
+  const handleLeftCardClick = (event) => {
     event.preventDefault();
-    handleLeftCardButton(recipeId);
+    handleLeftCardButton(leftClickParams);
+  };
+
+  const handleRightCardClick = (event) => {
+    event.preventDefault();
+    handleRightCardButton(rightClickParams);
   };
 
   return (
@@ -21,17 +27,10 @@ function Card({
           <em>{subtitle}</em>
         </h6>
         <p className="card-text">{description}</p>
-        <Link
-          className="card-link"
-          onClick={handleLeftClick}
-          to={toPath}
-        >
+        <a className="card-link" onClick={handleLeftCardClick}>
           Ver Receta
-        </Link>
-        {/* <button onClick={handleLeftClick} className="card-link">
-          Ver Receta
-        </button> */}
-        <a href="#" className="card-link">
+        </a>
+        <a className="card-link" onClick={handleRightCardClick}>
           Modificar Receta
         </a>
       </div>

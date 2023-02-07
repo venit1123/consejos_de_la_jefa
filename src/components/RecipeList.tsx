@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { fetchRecipeList } from "../api-client";
 
-function RecipeList({ initialRecipies, onRecipeClick }) {
-  const [recipies, setRecipies] = useState(initialRecipies);
+function RecipeList({ onViewRecipeClick, onEditRecipeClick }) {
+  const [recipies, setRecipies] = useState([]);
 
   useEffect(() => {
     fetchRecipeList().then((recipies) => {
@@ -23,9 +23,10 @@ function RecipeList({ initialRecipies, onRecipeClick }) {
                   title={recipe.name}
                   subtitle={recipe.author}
                   description={recipe.description}
-                  handleLeftCardButton={onRecipeClick}
-                  recipeId={recipe.id}
-                  toPath={`/recipes/${recipe.id}`}
+                  handleLeftCardButton={onViewRecipeClick}
+                  leftClickParams={{ recipeId: recipe.id }}
+                  handleRightCardButton={onEditRecipeClick}
+                  rightClickParams={{ recipeId: recipe.id }}
                 />
               </div>
             );

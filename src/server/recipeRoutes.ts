@@ -1,10 +1,10 @@
 import express from "express";
 import cors from "cors";
 import { connectClient } from "./db";
-import { parsePath } from "react-router-dom";
 
 const router = express.Router();
 router.use(cors());
+router.use(express.json());
 
 router.get("/recipes", async (req, res) => {
   const client = await connectClient();
@@ -31,6 +31,26 @@ router.get("/recipe/:recipeId", async (req, res) => {
   res.send({ recipe });
 });
 
+router.post("/recipe/edit/:recipeId", async (req, res) => {
+  const client = await connectClient();
+  const { newRecipeName, newInstructions } = req.body;
+
+  const doc = await client
+    .collection("recipies")
+    .findOneAndUpdate(
+      { id: req.params.recipeId },
+      {
+        $set: {
+          id: newRecipeName.toLowerCase().replace(/\s/g, "_"),
+          name: newRecipeName,
+          instructions: newInstructions,
+          timestamp: new Date(),
+        },
+      },
+      { returnDocument: "after" },
+    );
+  res.send({ updatedRecipe: doc.value });
+});
 export default router;
 
 /* Note: A middleware is an express function that access the request 
