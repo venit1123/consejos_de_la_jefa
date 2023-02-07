@@ -8,6 +8,7 @@ import OtherProjects from "./components/OtherProjects";
 import Recipe from "./components/RecipeInstructions";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditRecipe from "./components/EditRecipe";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root"),
@@ -18,12 +19,12 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/createRecipe" element={<CreateRecipe />} />
+      <Route path="/recipes" element={<Recipes />} />
+      <Route path="/recipes/:recipeId" element={<Recipe />} />
       <Route
-        path="/recipes"
-        element={<Recipes initialRecipies={[]} />}
-      >
-        <Route path=":recipeId" element={<Recipe />} />
-      </Route>
+        path="/recipes/edit/:recipeId"
+        element={<EditRecipe />}
+      />
       <Route path="/randomRecipe" element={<RandomRecipe />} />
       <Route path="/about" element={<AboutUs />}>
         <Route
