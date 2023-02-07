@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchRecipe, modifyRecipe } from "../api-client";
 import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import CancelButton from "./CanceButton";
 
 function EditRecipe() {
   const { recipeId } = useParams();
@@ -9,21 +9,17 @@ function EditRecipe() {
     name: "",
     instructions: "",
   });
-  const navigate = useNavigate();
-
-  const handleCancelEditRecipe = (event) => {
-    event.preventDefault();
-    navigate(-1);
-  };
 
   const handleEditRecipe = async (event) => {
     event.preventDefault();
     const value = event.target.value;
+
     setRecipeInput({
       ...recipeInput,
       [event.target.name]: value,
     });
-    const updatedRecipe = await modifyRecipe({
+
+    await modifyRecipe({
       recipeId: recipeId,
       newRecipeName: recipeInput.name,
       newInstructions: recipeInput.instructions,
@@ -71,7 +67,7 @@ function EditRecipe() {
           />
         </label>
         <br />
-        <button onClick={handleCancelEditRecipe}>Cancel</button>
+        <CancelButton navigateBack={true} />
         <input type="submit" value="Submit" />
       </form>
     </>

@@ -24,10 +24,6 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="nav-link" to="/createRecipe">
-              Create Recipe
-            </Link>
-
             <Link className="nav-link" to="/recipes">
               Recipes
             </Link>

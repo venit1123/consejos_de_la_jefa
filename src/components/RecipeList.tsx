@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import { fetchRecipeList } from "../api-client";
 
-function RecipeList({ onViewRecipeClick, onEditRecipeClick }) {
+function RecipeList({ onViewRecipeClick, onEditRecipeClick, onDeleteRecipeClick}) {
   const [recipies, setRecipies] = useState([]);
 
   useEffect(() => {
@@ -10,6 +10,14 @@ function RecipeList({ onViewRecipeClick, onEditRecipeClick }) {
       setRecipies(recipies);
     });
   }, []);
+
+//   const handleDeleteRecipe = async (event) => {
+//     event.preventDefault();
+//     await deleteRecipe({
+//       recipeId: recipeParams.recipeId
+//     });
+//   };
+
 
   return (
     <>
@@ -27,6 +35,8 @@ function RecipeList({ onViewRecipeClick, onEditRecipeClick }) {
                   leftClickParams={{ recipeId: recipe.id }}
                   handleRightCardButton={onEditRecipeClick}
                   rightClickParams={{ recipeId: recipe.id }}
+                  handleCloseCardButton={onDeleteRecipeClick}
+                  closeCardClickParams={{ recipeId: recipe.id }}
                 />
               </div>
             );

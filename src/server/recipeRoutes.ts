@@ -44,12 +44,37 @@ router.post("/recipe/edit/:recipeId", async (req, res) => {
           id: newRecipeName.toLowerCase().replace(/\s/g, "_"),
           name: newRecipeName,
           instructions: newInstructions,
-          timestamp: new Date(),
+          dateUpdated: new Date(),
         },
       },
       { returnDocument: "after" },
     );
   res.send({ updatedRecipe: doc.value });
+});
+
+router.put("/recipes/new-recipe", async (req, res) => {
+  const client = await connectClient();
+  const {
+    name,
+    author,
+    description,
+    categoryName,
+    feedCount,
+    // ingredients,
+    instructions,
+  } = req.body;
+  const doc = await client.collection("recipies").insert({
+    id: name.toLowerCase().replace(/\s/g, "_"),
+    name,
+    author,
+    description,
+    categoryName,
+    feedCount,
+    // ingredients,
+    instructions,
+    dateCreated: new Date(),
+  });
+  res.send({ newRecipe: doc.value });
 });
 export default router;
 
