@@ -24,3 +24,28 @@ export const modifyRecipe = async ({
   );
   return resp.data.updatedRecipe;
 };
+
+export const createNewRecipe = async ({
+  name,
+  author,
+  description,
+  categoryName,
+  feedCount,
+  // ingredients,
+  instructions,
+}) => {
+  const resp = await axios.put(
+    `${API_SERVER_URL}/recipes/new-recipe`,
+    {
+      name,
+      author,
+      description,
+      categoryName,
+      feedCount,
+      // ingredients,
+      instructions,
+    },
+  );
+  console.log(`NEW RECIPE DATA: ${resp.data.newRecipe}`);
+  return resp.data.newRecipe;
+};
