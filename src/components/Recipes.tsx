@@ -1,7 +1,6 @@
 import Nav from "./Nav";
 import RecipeList from "./RecipeList";
 import { useNavigate } from "react-router-dom";
-import Toast from "./Toast";
 
 function Recipes() {
   const navigate = useNavigate();
@@ -19,14 +18,6 @@ function Recipes() {
     navigate(`/recipes/new-recipe`);
   };
 
-  const handleDeleteRecipe = async (event) => {
-    event.preventDefault();
-    // return <Toast />;
-    // await deleteRecipe({
-    //   recipeId: recipeParams.recipeId
-    // });
-  };
-
   return (
     <>
       <Nav />
@@ -37,9 +28,7 @@ function Recipes() {
       <RecipeList
         onViewRecipeClick={navigateToRecipeInstructions}
         onEditRecipeClick={navigateToEditRecipe}
-        onDeleteRecipeClick={handleDeleteRecipe}
       />
-      <Toast/>
     </>
   );
 }

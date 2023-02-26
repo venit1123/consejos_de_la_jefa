@@ -46,6 +46,12 @@ export const createNewRecipe = async ({
       instructions,
     },
   );
-  console.log(`NEW RECIPE DATA: ${resp.data.newRecipe}`);
   return resp.data.newRecipe;
+};
+
+export const deleteRecipe = async ({ recipeId }) => {
+  const resp = await axios.delete(
+    `${API_SERVER_URL}/recipe/delete/${recipeId}`,
+  );
+  return resp.data.recipes;
 };

@@ -76,6 +76,15 @@ router.put("/recipes/new-recipe", async (req, res) => {
   });
   res.send({ newRecipe: doc.value });
 });
+
+router.delete("/recipe/delete/:recipeId", async (req, res) => {
+  const client = await connectClient();
+  const recipe = await client
+    .collection("recipies")
+    .deleteOne({ id: req.params.recipeId });
+  res.send({ recipe });
+});
+
 export default router;
 
 /* Note: A middleware is an express function that access the request 

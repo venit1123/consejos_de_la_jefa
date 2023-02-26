@@ -2,6 +2,7 @@ import Nav from "./Nav";
 import { useState } from "react";
 import CancelButton from "./CanceButton";
 import { createNewRecipe } from "../api-client";
+import { useNavigate } from "react-router-dom";
 
 function CreateRecipe() {
   const [newRecipeInput, setNewRecipeInput] = useState({
@@ -13,6 +14,8 @@ function CreateRecipe() {
     // ingredients: "",
     instructions: "",
   });
+
+  const navigate = useNavigate();
 
   const handleCreateNewRecipe = async (event) => {
     event.preventDefault();
@@ -32,6 +35,8 @@ function CreateRecipe() {
       // ingredients: newRecipeInput.ingredients,
       instructions: newRecipeInput.instructions,
     });
+
+    navigate(`/recipes`);
   };
 
   const handleInputChange = (event) => {
