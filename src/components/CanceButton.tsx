@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
-function CancelButton({ navigateBack = false }) {
+function CancelButton({
+  buttonName = "Cancel",
+  navigateBack = false,
+}) {
   const navigate = useNavigate();
 
   const handleCancelButton = (event) => {
@@ -9,8 +13,10 @@ function CancelButton({ navigateBack = false }) {
       navigate(-1);
     }
   };
-  
-  return <button onClick={handleCancelButton}>Cancel</button>;
+
+  return (
+    <Button onClick={handleCancelButton}>{buttonName}</Button>
+  );
 }
 
 export default CancelButton;

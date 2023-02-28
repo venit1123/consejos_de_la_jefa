@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+import CloseButton from "react-bootstrap/CloseButton";
 
-function Card({
+function UiCard({
   title,
   subtitle,
   description,
@@ -27,28 +28,25 @@ function Card({
   };
 
   return (
-    <div className="card h-100" style={{ width: "25rem" }}>
-      <button
-        type="button"
-        className="btn-close"
-        aria-label="Close"
+    <Card style={{ width: "18rem" }}>
+      <CloseButton
         onClick={handleCloseCardClick}
-      ></button>
-      <div className="card-body">
-        <h5 className="card-title">{title}</h5>
-        <h6 className="card-subtitle mb-2 text-muted">
+      />
+      <Card.Body>
+        <Card.Title className="title">{title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">
           <em>{subtitle}</em>
-        </h6>
-        <p className="card-text">{description}</p>
-        <a className="card-link" onClick={handleLeftCardClick}>
+        </Card.Subtitle>
+        <Card.Text>{description}</Card.Text>
+        <Card.Link onClick={handleLeftCardClick}>
           Ver Receta
-        </a>
-        <a className="card-link" onClick={handleRightCardClick}>
+        </Card.Link>
+        <Card.Link onClick={handleRightCardClick}>
           Modificar Receta
-        </a>
-      </div>
-    </div>
+        </Card.Link>
+      </Card.Body>
+    </Card>
   );
 }
 
-export default Card;
+export default UiCard;

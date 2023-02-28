@@ -1,6 +1,7 @@
-import Nav from "./Nav";
+import UiNav from "./UiNav";
 import RecipeList from "./RecipeList";
 import { useNavigate } from "react-router-dom";
+import { Container, Button } from "react-bootstrap";
 
 function Recipes() {
   const navigate = useNavigate();
@@ -20,15 +21,20 @@ function Recipes() {
 
   return (
     <>
-      <Nav />
-      <h1>Recipe</h1>
-      <button onClick={handleCreateNewRecipe}>
-        Crear Nueva Receta
-      </button>
-      <RecipeList
-        onViewRecipeClick={navigateToRecipeInstructions}
-        onEditRecipeClick={navigateToEditRecipe}
-      />
+      <UiNav />
+      <Container>
+        <h1 className="title">
+          Recetas de{" "}
+          <span className="cursive-title">Marina</span>
+        </h1>
+        <RecipeList
+          onViewRecipeClick={navigateToRecipeInstructions}
+          onEditRecipeClick={navigateToEditRecipe}
+        />
+        <Button onClick={handleCreateNewRecipe}>
+          New Recipe
+        </Button>
+      </Container>
     </>
   );
 }
