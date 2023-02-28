@@ -16,11 +16,20 @@ export const fetchRecipe = async (recipeId) => {
 export const modifyRecipe = async ({
   recipeId,
   newRecipeName,
+  newAuthor,
   newInstructions,
+  newDescription,
+  newFeedCount,
 }) => {
   const resp = await axios.post(
     `${API_SERVER_URL}/recipe/edit/${recipeId}`,
-    { newRecipeName, newInstructions },
+    {
+      newRecipeName,
+      newAuthor,
+      newInstructions,
+      newDescription,
+      newFeedCount,
+    },
   );
   return resp.data.updatedRecipe;
 };

@@ -33,7 +33,13 @@ router.get("/recipe/:recipeId", async (req, res) => {
 
 router.post("/recipe/edit/:recipeId", async (req, res) => {
   const client = await connectClient();
-  const { newRecipeName, newInstructions } = req.body;
+  const {
+    newRecipeName,
+    newAuthor,
+    newInstructions,
+    newDescription,
+    newFeedCount,
+  } = req.body;
 
   const doc = await client
     .collection("recipies")
@@ -43,7 +49,10 @@ router.post("/recipe/edit/:recipeId", async (req, res) => {
         $set: {
           id: newRecipeName.toLowerCase().replace(/\s/g, "_"),
           name: newRecipeName,
+          author: newAuthor,
           instructions: newInstructions,
+          description: newDescription,
+          feedCount: newFeedCount,
           dateUpdated: new Date(),
         },
       },
@@ -81,7 +90,7 @@ router.delete("/recipe/delete/:recipeId", async (req, res) => {
   const client = await connectClient();
   const recipe = await client
     .collection("recipies")
-    .deleteOne({ id: req.params.recipeId });
+    .deleteOne({ _id: req.params.recipeId });
   res.send({ recipe });
 });
 

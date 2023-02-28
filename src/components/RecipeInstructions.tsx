@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { fetchRecipe } from "../api-client";
 import { useParams } from "react-router";
-import Nav from "./Nav";
+import Nav from "./UiNav";
+import CancelButton from "./CanceButton";
+import {
+  Container,
+  Row,
+  Col,
+} from "react-bootstrap";
 
 function RecipeInstructions() {
   const { recipeId } = useParams();
@@ -18,9 +24,11 @@ function RecipeInstructions() {
   return (
     <>
       <Nav />
-      <h1>Recipe Instructions</h1>
-      <h5>{recipeName}</h5>
-      <p>{recipeInstructions}</p>
+      <Container>
+        <CancelButton buttonName="Back" navigateBack={true} />
+        <h5>{recipeName}</h5>
+        <p>{recipeInstructions}</p>
+      </Container>
     </>
   );
 }

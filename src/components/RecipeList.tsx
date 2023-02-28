@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import UICard from "./UICard";
 import { fetchRecipeList } from "../api-client";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -41,13 +41,12 @@ function RecipeList({ onViewRecipeClick, onEditRecipeClick }) {
 
   return (
     <>
-      <h3>Recipe List</h3>
       <div className="container">
         <div className="row">
           {recipies.map((recipe) => {
             return (
               <div key={recipe.name} className="col-sm p-3">
-                <Card
+                <UICard
                   title={recipe.name}
                   subtitle={recipe.author}
                   description={recipe.description}
